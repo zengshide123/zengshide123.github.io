@@ -307,16 +307,14 @@
 <h3 id="基本要素"><a href="#基本要素" class="headerlink" title="基本要素"></a>基本要素</h3><ul>
 <li>变量（variables）</li>
 <li>混合（mixins）</li>
-<li><p>参数混合（parametric mixins）</p>
-<ul>
-<li>参数混合逻辑控制（mixins guards）</li>
+<li>参数混合（parametric mixins）<ul>
+<li>参数混合逻辑控制（mixins guards） </li>
 </ul>
 </li>
-<li><p>嵌套（nest rules）</p>
-</li>
+<li>嵌套（nest rules）</li>
 </ul>
 <h3 id="变量的使用（varilables）"><a href="#变量的使用（varilables）" class="headerlink" title="变量的使用（varilables）"></a>变量的使用（varilables）</h3><blockquote>
-<p>　　使用关键字<strong>@</strong>+自定义标识符<br>  它通常用来代替一个重复用到的样式属性值</p>
+<p>　　使用关键字<strong>@</strong>+自定义标识符，它通常用来代替一个重复用到的样式属性值</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@header-bg:red;</span><br><span class="line">@header-height:100px;</span><br><span class="line">div&#123;</span><br><span class="line">   background-color: @header-bg;</span><br><span class="line">   height: @header-height;</span><br><span class="line">&#125;</span><br><span class="line">////编译后</span><br><span class="line">div &#123;</span><br><span class="line">  background-color: #ff0000;</span><br><span class="line">  height: 100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="混合的使用（mixins）"><a href="#混合的使用（mixins）" class="headerlink" title="混合的使用（mixins）"></a>混合的使用（mixins）</h3><blockquote>
