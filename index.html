@@ -387,191 +387,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/react-native环境初搭建‘/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mr.zeng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mr.zeng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/08/react-native环境初搭建‘/" itemprop="url">react-native环境初搭建</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T15:25:53+08:00">
-                2018-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="1-主要安装步骤"><a href="#1-主要安装步骤" class="headerlink" title="1.主要安装步骤"></a>1.主要安装步骤</h2><h3 id="1-安装jdk"><a href="#1-安装jdk" class="headerlink" title="1.安装jdk"></a>1.安装jdk</h3><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">jdk下载</a></p>
-<blockquote>
-<p>设置jdk的环境变量</p>
-</blockquote>
-<ul>
-<li>新建环境变量，JAVA_HOME= 安装目录地址</li>
-<li>设置path路径，加入%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</li>
-<li>CLASSPATH = %JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</li>
-</ul>
-<pre><code>`CMD 中键入 java -version验证正常即可`
-</code></pre><h3 id="2-安装Android-studio"><a href="#2-安装Android-studio" class="headerlink" title="2.安装Android-studio"></a>2.安装Android-studio</h3><p>   <a href="https://developer.android.google.cn/studio/index.html#win-bundle" target="_blank" rel="noopener"> AS下载</a></p>
-<h3 id="3-安装sdk"><a href="#3-安装sdk" class="headerlink" title="3.安装sdk"></a>3.安装sdk</h3><ol>
-<li>打开AS</li>
-<li>进入sdk manager</li>
-<li>选择 sdkplatforms 和 sdk tool进行项目依赖安装</li>
-</ol>
-<blockquote>
-<p>设置环境变量</p>
-</blockquote>
-<ol>
-<li>新建环境变量 ANDROID_HOME = 安装路径</li>
-<li>添加path路径tools和platform-tools路径即可</li>
-</ol>
-<blockquote>
-<p>CMD 中键入 adb 验证正常即可</p>
-</blockquote>
-<h3 id="4-安装git和nodeJs"><a href="#4-安装git和nodeJs" class="headerlink" title="4.安装git和nodeJs"></a>4.安装git和nodeJs</h3><blockquote>
-<p>按照提示安装即可</p>
-</blockquote>
-<h3 id="5-安装react-native"><a href="#5-安装react-native" class="headerlink" title="5.安装react-native"></a>5.安装react-native</h3><blockquote>
-<ul>
-<li>打开git 键入 $ npm install -g react-native-cli </li>
-<li>react-native init demo初始化一个项目</li>
-<li>浏览器中输入localhost:8081，查看提示是否成功</li>
-</ul>
-</blockquote>
-<h3 id="6-生成安卓文件"><a href="#6-生成安卓文件" class="headerlink" title="6.生成安卓文件"></a>6.生成安卓文件</h3><blockquote>
-<p>react-native run-android</p>
-</blockquote>
-<h3 id="7-安卓模拟器"><a href="#7-安卓模拟器" class="headerlink" title="7.安卓模拟器"></a>7.安卓模拟器</h3><blockquote>
-<p>使用AS打开模拟器（浏览器自带的模拟器）</p>
-</blockquote>
-<blockquote>
-<p>本人安装了夜神模拟器，一样通过AS可以打开</p>
-</blockquote>
-<h2 id="2-问题及BUG"><a href="#2-问题及BUG" class="headerlink" title="2.问题及BUG"></a>2.问题及BUG</h2><pre><code>1.编译过程中提示Aapt2Exception错误
-</code></pre><blockquote>
-<p>在项目文件夹中，找到gradle.properties文件，添加android.enableAapt2=false</p>
-</blockquote>
-<pre><code>2.编译过程中提示Error:Execution failed for task &apos;:app:mergeDebugResources&apos;错误
-</code></pre><blockquote>
-<p>在项目app文件中找到build.gradle文件，添加        aaptOptions.cruncherEnabled = false<br>        aaptOptions.useNewCruncher = false</p>
-</blockquote>
-<pre><code>3.编译过程中提示 path:ASIIC错误
-</code></pre><blockquote>
-<p>更换文件的路径，路径名中不能出现中文</p>
-</blockquote>
-<pre><code>4.AS 提示VTX disabled in BIOS
-</code></pre><blockquote>
-<p>重启电脑进行Bios界面，将virtual选项设置为enabled即可</p>
-</blockquote>
-<pre><code>5.夜神模拟器无法被AS识别
-</code></pre><blockquote>
-<p>找到夜神安装目录，进入bin文件，在CMD 中输入 nox_adb.exe connect 127.0.0.1:62001 提示连接成功即可</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/react-native环境初搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1216,7 +1031,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1229,7 +1044,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
