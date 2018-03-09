@@ -232,6 +232,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/09/less的基本语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.zeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.zeng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/less的基本语法/" itemprop="url">less的基本语法‘</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T16:16:39+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>###　基本要素</p>
+<ul>
+<li>变量（variables）</li>
+<li>混合（mixins）</li>
+<li><p>参数混合（parametric mixins）</p>
+<ul>
+<li>参数混合逻辑控制（mixins guards）</li>
+</ul>
+</li>
+<li><p>嵌套（nest rules）</p>
+</li>
+</ul>
+<p>###　变量的使用（varilables）</p>
+<blockquote>
+<p>　　使用关键字<strong>@</strong>+自定义标识符<br>  它通常用来代替一个重复用到的样式属性值</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">    @header-bg:red;</span><br><span class="line">    @header-height:100px;</span><br><span class="line">    div&#123;</span><br><span class="line">       background-color: @header-bg;</span><br><span class="line">       height: @header-height;</span><br><span class="line">    &#125;</span><br><span class="line">    ////编译后</span><br><span class="line">    div &#123;</span><br><span class="line">      background-color: #ff0000;</span><br><span class="line">      height: 100px;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">###　混合的使用（mixins）</span><br><span class="line"></span><br><span class="line">&gt; 　　混合的使用，是将定义好的类名直接整体移入到调用的地方，相当于在调用处，新建一个样式块</span><br><span class="line"></span><br><span class="line">    　　这种方法的使用，在定义混合的时候没用加上（），所以在编译后，依旧会保留相关的类定义</span><br></pre></td></tr></table></figure>
+<pre><code>#定义两个不带小括号混合
+.fl{ float: left }
+.fr{ float: right }
+#定义两个调用
+.left{ .fl() }
+.right{ .fr() }
+///编译后
+.fl { float: left }
+.fr { float: right }
+.left { float: left }
+.right { float: right }
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    　　下面这种，通过在定义混合的时候加上（），可以在编译后，不保留相关的类定义</span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line">     #定义两个带小括号的混合</span><br><span class="line">    .fl()&#123; float: left &#125;</span><br><span class="line">    .fr()&#123; float: right &#125;、</span><br><span class="line">     #定义两个调用</span><br><span class="line">    .left&#123; .fl() &#125;</span><br><span class="line">    .right&#123; .fr() &#125;</span><br><span class="line">     #定义两个调用</span><br><span class="line">    .left &#123; float: left &#125;</span><br><span class="line">    .right &#123; float: right&#125;</span><br></pre></td></tr></table></figure>
+<p>###　参数混合（parametric_mixins）</p>
+<blockquote>
+<p>　　参数混合的目的是：可以灵活的自定义样式值，它有点类似于变量加混合的结合用法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#定义带小括号的参数混合，并在小括号中使用变量（同时可以设置参数值）</span><br><span class="line">.fl() &#123; float: left &#125;</span><br><span class="line">.fr() &#123; float: right &#125;</span><br><span class="line">.left &#123;</span><br><span class="line">     .fl();</span><br><span class="line">     ##这里会使用默认参数</span><br><span class="line">     .border-radius();</span><br><span class="line"> &#125;</span><br><span class="line"> .right &#123;</span><br><span class="line">     .fr();</span><br><span class="line">     ##这里会使用自定义参数</span><br><span class="line">     .border-radius(15px)</span><br><span class="line"> &#125;</span><br><span class="line"> .border-radius(@r: 50%) &#123;</span><br><span class="line">     border-radius: @r</span><br><span class="line"> &#125;</span><br><span class="line"> ///编译后</span><br><span class="line"> .left &#123;</span><br><span class="line">   float: left;</span><br><span class="line">   border-radius: 50%;</span><br><span class="line"> &#125;</span><br><span class="line"> .right &#123;</span><br><span class="line">   float: right;</span><br><span class="line">   border-radius: 15px;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="参数逻辑条件混合-mixin-guards"><a href="#参数逻辑条件混合-mixin-guards" class="headerlink" title="　参数逻辑条件混合(mixin_guards)"></a>　参数逻辑条件混合(mixin_guards)</h3><blockquote>
+<p> 它的使用是<strong>#</strong>开头，在加上逻辑混合的写法，最后加上when(变量判断)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#定义一个参数逻辑混合</span><br><span class="line">#fontSize(@px) when (@px=small)&#123;</span><br><span class="line">font-size:12px;</span><br><span class="line">&#125;</span><br><span class="line">#fontSize(@px) when (@px=middle)&#123;</span><br><span class="line">    font-size: 24px;</span><br><span class="line">    color: yellow;</span><br><span class="line">&#125;</span><br><span class="line">#fontSize(@px) when (@px=big)&#123;</span><br><span class="line">    font-size: 30px;</span><br><span class="line">    color: blue</span><br><span class="line">&#125;</span><br><span class="line">#调用</span><br><span class="line">.left &#123;</span><br><span class="line">.fl();</span><br><span class="line">.border-radius();</span><br><span class="line">#fontSize(big)</span><br><span class="line">&#125;</span><br><span class="line">.right &#123;</span><br><span class="line">    .fr();</span><br><span class="line">    .border-radius(15px);</span><br><span class="line">    #fontSize(middle)</span><br><span class="line">&#125;</span><br><span class="line">///编译后</span><br><span class="line">.left &#123;</span><br><span class="line">  font-size: 30px;</span><br><span class="line">  color: #0000ff;</span><br><span class="line">&#125;</span><br><span class="line">.right &#123;</span><br><span class="line">  font-size: 24px;</span><br><span class="line">  color: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="嵌套规则（Nesting）"><a href="#嵌套规则（Nesting）" class="headerlink" title="　嵌套规则（Nesting）"></a>　嵌套规则（Nesting）</h3><blockquote>
+<p>嵌套规则可以快速的定义样式的层级关系，也能明显的反映出html的文本结构</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#第一种嵌套是使用空格嵌套，它反映的是html的层级关系</span><br><span class="line">#定义一个嵌套</span><br><span class="line">.parent&#123;</span><br><span class="line">   .son&#123;</span><br><span class="line">     color:red;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> ///编译后</span><br><span class="line"> .parent .son&#123;</span><br><span class="line">     color:red;</span><br><span class="line"> &#125;</span><br><span class="line"> #第二种嵌套是使用&amp;连接嵌套，它代表当前嵌套父级的前缀(引用父级名)</span><br><span class="line"> #定义一个嵌套</span><br><span class="line"> .parent&#123;</span><br><span class="line">     &amp;._son&#123;</span><br><span class="line">        color:red;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> ///编译后</span><br><span class="line"> .parent_son&#123;</span><br><span class="line">     color:red;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p> 　　
+    　　
+  　　</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/react-native环境初搭建‘/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -880,7 +1045,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -888,6 +1053,15 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>
