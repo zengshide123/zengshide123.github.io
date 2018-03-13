@@ -232,154 +232,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/mongodb基本安装流程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mr.zeng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mr.zeng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/13/mongodb基本安装流程/" itemprop="url">'mongodb基本安装流程'</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-13T11:27:47+08:00">
-                2018-03-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="1、下载mongodb"><a href="#1、下载mongodb" class="headerlink" title="1、下载mongodb"></a>1、下载mongodb</h3><blockquote>
-<p>　　下载地址 <a href="https://www.mongodb.com/download-center?jmp=nav#atlas" target="_blank" rel="noopener">mongodb</a>选择社区服务器</p>
-</blockquote>
-<pre><code>打开下载文件依照提示安装即可，一般选择custom自定义安装路径
-</code></pre><h3 id="2、新建文件"><a href="#2、新建文件" class="headerlink" title="2、新建文件"></a>2、新建文件</h3><blockquote>
-<p>　　在mongod安装目录下</p>
-</blockquote>
-<p><strong>新建</strong></p>
-<ul>
-<li>data</li>
-<li>data/db</li>
-<li>data/log</li>
-<li>data/log/mongo.log</li>
-<li>mongo.config</li>
-</ul>
-<h3 id="3、测试连接是否正常"><a href="#3、测试连接是否正常" class="headerlink" title="3、测试连接是否正常"></a>3、测试连接是否正常</h3><blockquote>
-<p>　　打开命令行工具：mongod–dbpathD:\software\MongoDB\data\db（data之前为自定义安装的路径，在本地27017端口测试）</p>
-</blockquote>
-<h3 id="4、将mongodb设置成系统服务"><a href="#4、将mongodb设置成系统服务" class="headerlink" title="4、将mongodb设置成系统服务"></a>4、将mongodb设置成系统服务</h3><blockquote>
-<p>打开mongo.config文件：dbpath=D:\software\MongoDB\data\db<br>logpath=D:\software\MongoDB\data\log\mongo.log（路径名依照自定义修改即可）</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>是管理员命令行进入到mongodb安装目录：mongod –config D:\software\Mongodb\mongo.config –install –serviceName “MongoDB”（路径依上）（查看计算机服务，找到mongo即安装成功）</p>
-</blockquote>
-<h3 id="5、启动"><a href="#5、启动" class="headerlink" title="5、启动"></a>5、启动</h3><blockquote>
-<p>　　打开命令行工具输入：net start MongoDB    </p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/09/less的基本语法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1179,7 +1031,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1192,7 +1044,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
