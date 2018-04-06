@@ -232,6 +232,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/06/react-transition-group/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.zeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.zeng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/06/react-transition-group/" itemprop="url">react-transition-group</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T22:51:22+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<pre><code>React-transition-group插件由社区进行维护，内容包含原有的ReactTransitionGroup和ReactCSSTransitionGroup插件，这两个插件的API能够被该插件所兼容。
+ReactTransitionGroup插件是更底层的API，是基于动画的应用。
+ReactCSSTransitionGroup是基于CSS动画和过渡的应用，并且它的更加易于使用。
+</code></pre><h3 id="高层API（ReactCSSTransitionGroup）"><a href="#高层API（ReactCSSTransitionGroup）" class="headerlink" title="高层API（ReactCSSTransitionGroup）"></a>高层API（ReactCSSTransitionGroup）</h3><pre><code>ReactCSSTransitionGroup是在ReactTransitionGroup的基础上封装的更易用的高层API。并且在组件的进入和离开时，它能够更好的实现CSS 动画和过渡。（项目受 ng-animate库启发）
+</code></pre><h4 id="1、基本使用"><a href="#1、基本使用" class="headerlink" title="1、基本使用"></a>1、基本使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">    @react</span><br><span class="line">    import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">    import ReactCSSTransitionGroup from &apos;react-addons-css-transition-group&apos;;</span><br><span class="line">    import &apos;./index.css&apos;;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  constructor(props)&#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state=&#123;</span><br><span class="line">      items:[&apos;hello&apos;,&apos;world&apos;,&apos;click&apos;,&apos;me&apos;]</span><br><span class="line">    &#125;</span><br><span class="line">    this.handleAdd = this.handleAdd.bind(this);</span><br><span class="line">  &#125;</span><br><span class="line">  handleAdd()&#123;</span><br><span class="line">    const newItems = this.state.items.concat([</span><br><span class="line">      prompt(&apos;请输入内容&apos;)</span><br><span class="line">    ]);</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      items:newItems</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  handleRemove(i)&#123;</span><br><span class="line">    let newItems = [...this.state.items];</span><br><span class="line">        newItems.splice(i,1);        </span><br><span class="line">        this.setState(&#123;items:newItems&#125;);</span><br><span class="line">        </span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">      const items = this.state.items.map((val,i)=&gt;&#123;</span><br><span class="line">        return(</span><br><span class="line">           &lt; div key = &#123;val&#125;  onClick = &#123;() =&gt; this.handleRemove(i) &#125; &gt;</span><br><span class="line">             &#123;val&#125;                         </span><br><span class="line">           &lt;/div&gt;            </span><br><span class="line">        )</span><br><span class="line">      &#125;)</span><br><span class="line">    return (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">               &lt;button onClick = &#123; this.handleAdd &#125; &gt; Add Item &lt;/button&gt; </span><br><span class="line">                  &lt;ReactCSSTransitionGroup </span><br><span class="line">                    transitionName=&quot;example&quot;</span><br><span class="line">                    transitionEnterTimeout=&#123;500&#125;</span><br><span class="line">                    transitionLeaveTimeout=&#123;300&#125;</span><br><span class="line">                  &gt;                       </span><br><span class="line">               &#123;items&#125;        </span><br><span class="line">              &lt;/ReactCSSTransitionGroup&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+<p><code>CSS文件</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@css</span><br><span class="line">.example-enter&#123;</span><br><span class="line">  opacity: 0.01;</span><br><span class="line">&#125;</span><br><span class="line">.example-enter.example-enter-active&#123;</span><br><span class="line">  opacity:1;</span><br><span class="line">  transition: opacity 500ms ease-in</span><br><span class="line">&#125;</span><br><span class="line">.example-leave&#123;</span><br><span class="line">  opacity: 1;</span><br><span class="line">&#125;</span><br><span class="line">.example-leave.example-leave-active&#123;</span><br><span class="line">  opacity: .01;</span><br><span class="line">  transition: opacity 300ms ease-in</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<pre><code>demo基于props（TransitionName）的约定，通过相应的样式定义。
+</code></pre><h4 id="2、初次渲染的动画（Appear）"><a href="#2、初次渲染的动画（Appear）" class="headerlink" title="2、初次渲染的动画（Appear）"></a>2、初次渲染的动画（Appear）</h4><pre><code>transitionAppear(第一次出现)动画，主要处理组件初次挂载时候的动画，它默认是不开启的。
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@修改上面demo</span><br><span class="line">           &lt;ReactCSSTransitionGroup </span><br><span class="line">                transitionName=&quot;example&quot;</span><br><span class="line">                transitionEnterTimeout=&#123;500&#125;</span><br><span class="line">                transitionLeaveTimeout=&#123;300&#125;</span><br><span class="line">                transitionAppear=&#123;true&#125;</span><br><span class="line">                transitionAppearTimeout=&#123;500&#125;</span><br><span class="line">              &gt;                       </span><br><span class="line">           &#123;items&#125;        </span><br><span class="line">          &lt;/ReactCSSTransitionGroup&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@修改上述demo的css</span><br><span class="line">.example-appear&#123;</span><br><span class="line">  opacity: .01;</span><br><span class="line">&#125;</span><br><span class="line">.example-appear.example-appear-active&#123;</span><br><span class="line">  opacity: 1;</span><br><span class="line">  transition: opacity .5s ease-in</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>第一次渲染时，进入（enter）默认是不渲染的，通过使用Appear可以控制首次渲染时的动画。
+</code></pre><h3 id="ReactCSSTransitionGroup自定义配置"><a href="#ReactCSSTransitionGroup自定义配置" class="headerlink" title="ReactCSSTransitionGroup自定义配置"></a>ReactCSSTransitionGroup自定义配置</h3><h4 id="1、自定义动画启动和关闭"><a href="#1、自定义动画启动和关闭" class="headerlink" title="1、自定义动画启动和关闭"></a>1、自定义动画启动和关闭</h4><pre><code>通过将各阶段的动画设置为true可以开启动画，其中enter,leave是默认开启的，appear是默认关闭的。
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@示例enter</span><br><span class="line">@开启</span><br><span class="line">transitionEnter=&#123;true&#125;</span><br><span class="line">@关闭</span><br><span class="line">transitionLeave=&#123;false&#125;</span><br></pre></td></tr></table></figure>
+<p>####2、自动义<br>        transitionName可以是字符串，也可以是一个对象。<br>        当没有定义enterActive和leaveActive的类名的时候，它会自动依据自动的enter和leave类名加入后缀-active。</p>
+<pre><code>下面两种定义方式的结果相同：
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@完全定义</span><br><span class="line">&lt;ReactCSSTransitionGroup</span><br><span class="line">   transitionName&#123;&#123;</span><br><span class="line">        enter：&apos;enter&apos;,</span><br><span class="line">        enterActive:&apos;enterActive&apos;</span><br><span class="line">        leave:&apos;leave&apos;</span><br><span class="line">        leaveActive:&apos;leaveActive&apos;</span><br><span class="line">        appear:&apos;appear&apos;</span><br><span class="line">        appearActive:&apos;appearActive&apos;</span><br><span class="line">   &#125;&#125;</span><br><span class="line">&gt;</span><br><span class="line">&#123;item&#125;</span><br><span class="line">&lt;/ReactCSSTransitionGroup&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@不完全定义</span><br><span class="line">    &lt;ReactCSSTransitionGroup</span><br><span class="line">   transitionName&#123;&#123;</span><br><span class="line">        enter：&apos;enter&apos;,</span><br><span class="line">        leave:&apos;leave&apos;</span><br><span class="line">        appear:&apos;appear&apos;</span><br><span class="line">   &#125;&#125;</span><br><span class="line">&gt;</span><br><span class="line">&#123;item&#125;</span><br><span class="line">&lt;/ReactCSSTransitionGroup&gt;</span><br></pre></td></tr></table></figure>
+<p>###注意事项<br>        在组件的子组件需要动画时，需要在子组件渲染之前，ReactCSSTransitionGroup已经可以被渲染或者将Appear设置为true。<br>        错误示例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@子组件和ReactCSSTransitionGroup是同时被渲染的</span><br><span class="line">render() &#123;</span><br><span class="line">          const items = this.state.items.map((item, i) =&gt; (</span><br><span class="line">            &lt;div key=&#123;item&#125; onClick=&#123;() =&gt; this.handleRemove(i)&#125;&gt;</span><br><span class="line">              &lt;CSSTransitionGroup transitionName=&quot;example&quot;&gt;</span><br><span class="line">                &#123;item&#125;</span><br><span class="line">              &lt;/CSSTransitionGroup&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">          ));</span><br><span class="line">        </span><br><span class="line">          return (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">              &lt;button onClick=&#123;this.handleAdd&#125;&gt;Add Item&lt;/button&gt;</span><br><span class="line">              &#123;items&#125;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">          );</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="简单应用"><a href="#简单应用" class="headerlink" title="简单应用"></a>简单应用</h3><pre><code>ReactCSSTransitionGroup可以渲染一个甚至0个子元素，（也就是说它可以出现和消失），这未实现轮播图提供了可能。
+通过变化轮播图的元素出现和消失，可以让它形成轮播的效果。
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    @demo</span><br><span class="line">    import CSSTransitionGroup from &apos;react-transition-group/CSSTransitionGroup&apos;;</span><br><span class="line"></span><br><span class="line">function ImageCarousel(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">              &lt;CSSTransitionGroup</span><br><span class="line">                transitionName=&quot;carousel&quot;</span><br><span class="line">                transitionEnterTimeout=&#123;300&#125;</span><br><span class="line">                transitionLeaveTimeout=&#123;300&#125;&gt;</span><br><span class="line">                &lt;img src=&#123;props.imageSrc&#125; key=&#123;props.imageSrc&#125; /&gt;</span><br><span class="line">              &lt;/CSSTransitionGroup&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="监听动画的过程"><a href="#监听动画的过程" class="headerlink" title="监听动画的过程"></a>监听动画的过程</h3><pre><code>当元素的进行一系列复杂的动画后，可以通过底层的ReactTransitionGroup提过的钩子API。
+</code></pre><ul>
+<li>componentWillAppear()</li>
+<li>componentDidAppear()</li>
+<li>componentWillEnter()</li>
+<li>componentDidEnter()</li>
+<li>componentWillLeave()</li>
+<li>componentDidLeave()</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/mongodb基本安装流程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1179,7 +1329,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1192,7 +1342,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
